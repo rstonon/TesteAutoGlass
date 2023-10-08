@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>2023.10.8.3</AssemblyVersion>
+    <FileVersion>2023.10.8.3</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TesteAutoGlass.Core\TesteAutoGlass.Core.csproj" />
+    <ProjectReference Include="..\TesteAutoGlass.Infrastructure\TesteAutoGlass.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
