@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TesteAutoGlass.Core.Repositories;
 using TesteAutoGlass.Infrastructure.Persistence;
 
 namespace TesteAutoGlass.Application.Commands.DeleteProduct
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, Unit>
     {
-        private readonly AutoGlassDbContext _dbContext;
-        public DeleteProductCommandHandler(AutoGlassDbContext dbContext)
+        private readonly IProductRepository _repository;
+        public DeleteProductCommandHandler(IProductRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository; ;
         }
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            var product = _dbContext.Products.SingleOrDefault(p => p.Codigo == request.Codigo);
+            var product = await _repository.GetByIdAsync(request.Codigo);
 
             product.Delete();
 
-            await _dbContext.SaveChangesAsync();
+            await _repository.SaveChangesAsync();
 
             return Unit.Value;
         }

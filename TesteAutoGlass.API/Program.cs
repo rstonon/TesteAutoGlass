@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using TesteAutoGlass.Application.Commands.CreateProduct;
-using TesteAutoGlass.Application.Services.Implementations;
-using TesteAutoGlass.Application.Services.Interfaces;
-using TesteAutoGlass.Core.Entities;
+using TesteAutoGlass.Core.Repositories;
 using TesteAutoGlass.Infrastructure.Persistence;
+using TesteAutoGlass.Infrastructure.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("conn");
 builder.Services.AddDbContext<AutoGlassDbContext>(p => p.UseSqlServer(connectionString));
 //builder.Services.AddDbContext<AutoGlassDbContext>(options => options.UseInMemoryDatabase("conn"));
 
-builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
 

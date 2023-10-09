@@ -32,7 +32,7 @@ namespace TesteAutoGlass.Core.Entities
         {
             if (Situacao == ProductStatusEnum.Ativo)
             {
-                Situacao = ProductStatusEnum.Excluido;
+                Situacao = ProductStatusEnum.Inativo;
             }
         }
 

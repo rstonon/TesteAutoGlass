@@ -4,13 +4,9 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>2023.10.9.15</AssemblyVersion>
-    <FileVersion>2023.10.9.15</FileVersion>
+    <AssemblyVersion>2023.10.9.19</AssemblyVersion>
+    <FileVersion>2023.10.9.19</FileVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />

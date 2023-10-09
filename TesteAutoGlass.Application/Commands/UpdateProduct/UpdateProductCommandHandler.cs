@@ -1,27 +1,22 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TesteAutoGlass.Infrastructure.Persistence;
+using TesteAutoGlass.Core.Repositories;
 
 namespace TesteAutoGlass.Application.Commands.UpdateProduct
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Unit>
     {
-        private readonly AutoGlassDbContext _dbContext;
-        public UpdateProductCommandHandler(AutoGlassDbContext dbContext)
+        private readonly IProductRepository _repository;
+        public UpdateProductCommandHandler(IProductRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = _dbContext.Products.SingleOrDefault(p => p.Codigo == request.Codigo);
+            var product = await _repository.GetByIdAsync(request.Codigo);
 
             product.Update(request.Descricao, request.Situacao, request.DataFabricacao, request.DataValidade, request.CodigoFornecedor, request.DescricaoFornecedor, request.CNPJFornecedor);
 
-            await _dbContext.SaveChangesAsync();
+            await _repository.SaveChangesAsync();
 
             return Unit.Value;
         }

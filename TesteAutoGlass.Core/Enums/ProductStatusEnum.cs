@@ -9,6 +9,6 @@ namespace TesteAutoGlass.Core.Enums
     public enum ProductStatusEnum
     {
         Ativo = 1,
-        Excluido = 2,
+        Inativo = 2,
     }
 }

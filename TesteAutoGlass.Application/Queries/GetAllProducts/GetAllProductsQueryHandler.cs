@@ -6,26 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TesteAutoGlass.Application.ViewModels;
+using TesteAutoGlass.Core.Repositories;
 using TesteAutoGlass.Infrastructure.Persistence;
 
 namespace TesteAutoGlass.Application.Queries.GetAllProducts
 {
     public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, List<ProductViewModel>>
     {
-        private readonly AutoGlassDbContext _dbContext;
-        public GetAllProductsQueryHandler(AutoGlassDbContext dbContext)
+        private readonly IProductRepository _repository;
+        public GetAllProductsQueryHandler(IProductRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
         public async Task<List<ProductViewModel>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = _dbContext.Products;
+            var products = await _repository.GetAllAsync();
 
-            var productsViewModel = await products
-                .Select(p => new ProductViewModel(p.Codigo, p.Descricao))
+            var productsViewModel = products
+                .Select(p => new ProductViewModel(p.Codigo, p.Descricao, p.Situacao))
+                .Where(p => p.Situacao == Core.Enums.ProductStatusEnum.Ativo)
                 //.Skip((pageSize - 1) * page)
                 //.Take(pageSize)
-                .ToListAsync();
+                .ToList();
 
             return productsViewModel;
         }

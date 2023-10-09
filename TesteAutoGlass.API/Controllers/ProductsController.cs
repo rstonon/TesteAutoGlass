@@ -1,26 +1,19 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TesteAutoGlass.API.Models;
 using TesteAutoGlass.Application.Commands.CreateProduct;
 using TesteAutoGlass.Application.Commands.DeleteProduct;
 using TesteAutoGlass.Application.Commands.UpdateProduct;
-using TesteAutoGlass.Application.InputModels;
 using TesteAutoGlass.Application.Queries.GetAllProducts;
 using TesteAutoGlass.Application.Queries.GetByIDProduct;
-using TesteAutoGlass.Application.Services.Interfaces;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace TesteAutoGlass.API.Controllers
 {
     [Route("api/produtos")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductService _productService;
         private readonly IMediator _mediator;
-        public ProductsController(IProductService productService, IMediator mediator)
+        public ProductsController(IMediator mediator)
         {
-            _productService = productService;
             _mediator = mediator;
         }
 
