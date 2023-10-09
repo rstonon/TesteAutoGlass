@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TesteAutoGlass.Application.InputModels;
-using TesteAutoGlass.Application.Services.Interfaces;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using TesteAutoGlass.Application.ViewModels;
-using TesteAutoGlass.Core.Entities;
 using TesteAutoGlass.Infrastructure.Persistence;
 
-namespace TesteAutoGlass.Application.Services.Implementations
+namespace TesteAutoGlass.Application.Queries.GetByIDProduct
 {
-    public class ProductService : IProductService
+    public class GetByIDProductQueryHandler : IRequestHandler<GetByIDProductQuery, ProductDetailsViewModel>
     {
         private readonly AutoGlassDbContext _dbContext;
-        public ProductService(AutoGlassDbContext dbContext)
+        public GetByIDProductQueryHandler(AutoGlassDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-
-        public ProductDetailsViewModel GetById(int id)
+        public async Task<ProductDetailsViewModel> Handle(GetByIDProductQuery request, CancellationToken cancellationToken)
         {
-            var product = _dbContext.Products.SingleOrDefault(p => p.Codigo == id);
+            var product = await _dbContext.Products.SingleOrDefaultAsync(p => p.Codigo == request.Codigo);
 
             if (product == null) return null;
 

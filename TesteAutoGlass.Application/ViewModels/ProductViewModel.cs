@@ -10,10 +10,12 @@ namespace TesteAutoGlass.Application.ViewModels
     {
 
 
-        public ProductViewModel(string descricao)
+        public ProductViewModel(int codigo, string descricao)
         {
+            Codigo = codigo;
             Descricao = descricao;
         }
+        public int Codigo { get; private set; }
         public string Descricao { get; private set; }
     }
 }

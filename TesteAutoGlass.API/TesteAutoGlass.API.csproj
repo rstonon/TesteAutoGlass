@@ -4,12 +4,18 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyVersion>2023.10.8.3</AssemblyVersion>
-    <FileVersion>2023.10.8.3</FileVersion>
+    <AssemblyVersion>2023.10.9.22</AssemblyVersion>
+    <FileVersion>2023.10.9.22</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
@@ -17,6 +23,12 @@
     <ProjectReference Include="..\TesteAutoGlass.Application\TesteAutoGlass.Application.csproj" />
     <ProjectReference Include="..\TesteAutoGlass.Core\TesteAutoGlass.Core.csproj" />
     <ProjectReference Include="..\TesteAutoGlass.Infrastructure\TesteAutoGlass.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -4,13 +4,17 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>2023.10.8.3</AssemblyVersion>
-    <FileVersion>2023.10.8.3</FileVersion>
+    <AssemblyVersion>2023.10.9.18</AssemblyVersion>
+    <FileVersion>2023.10.9.18</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TesteAutoGlass.Core\TesteAutoGlass.Core.csproj" />
     <ProjectReference Include="..\TesteAutoGlass.Infrastructure\TesteAutoGlass.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
 </Project>

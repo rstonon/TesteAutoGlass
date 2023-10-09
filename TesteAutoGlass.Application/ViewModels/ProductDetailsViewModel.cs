@@ -9,7 +9,7 @@ namespace TesteAutoGlass.Application.ViewModels
 {
     public class ProductDetailsViewModel
     {
-        public ProductDetailsViewModel(int codigo, string descricao, ProductStatusEnum situacao, DateOnly dataFabricacao, DateOnly dataValidade, int codigoFornecedor, string descricaoFornecedor, string cNPJFornecedor)
+        public ProductDetailsViewModel(int codigo, string descricao, ProductStatusEnum situacao, DateTime dataFabricacao, DateTime dataValidade, int codigoFornecedor, string descricaoFornecedor, string cNPJFornecedor)
         {
             Codigo = codigo;
             Descricao = descricao;
@@ -24,8 +24,8 @@ namespace TesteAutoGlass.Application.ViewModels
         public int Codigo { get; private set; }
         public string Descricao { get; private set; }
         public ProductStatusEnum Situacao { get; private set; }
-        public DateOnly DataFabricacao { get; private set; }
-        public DateOnly DataValidade { get; private set; }
+        public DateTime DataFabricacao { get; private set; }
+        public DateTime DataValidade { get; private set; }
         public int CodigoFornecedor { get; private set; }
         public string DescricaoFornecedor { get; private set; }
         public string CNPJFornecedor { get; private set; }

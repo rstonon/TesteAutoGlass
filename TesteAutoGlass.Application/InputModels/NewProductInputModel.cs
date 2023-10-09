@@ -4,12 +4,12 @@ namespace TesteAutoGlass.Application.InputModels
 {
     public class NewProductInputModel
     {
-        public string Descricao { get; private set; }
-        public ProductStatusEnum Situacao { get; private set; }
-        public DateOnly DataFabricacao { get; private set; }
-        public DateOnly DataValidade { get; private set; }
-        public int CodigoFornecedor { get; private set; }
-        public string DescricaoFornecedor { get; private set; }
-        public string CNPJFornecedor { get; private set; }
+        public string Descricao { get; set; }
+        public ProductStatusEnum Situacao { get; set; }
+        public DateTime DataFabricacao { get; set; }
+        public DateTime DataValidade { get; set; }
+        public int CodigoFornecedor { get; set; }
+        public string DescricaoFornecedor { get; set; }
+        public string CNPJFornecedor { get; set; }
     }
 }

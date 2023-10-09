@@ -1,14 +1,16 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TesteAutoGlass.Core.Enums;
 
-namespace TesteAutoGlass.Application.InputModels
+namespace TesteAutoGlass.Application.Commands.UpdateProduct
 {
-    public class UpdateProductInputModel
+    public class UpdateProductCommand : IRequest<Unit>
     {
+        public int Codigo { get; set; }
         public string Descricao { get; set; }
         public ProductStatusEnum Situacao { get; set; }
         public DateTime DataFabricacao { get; set; }

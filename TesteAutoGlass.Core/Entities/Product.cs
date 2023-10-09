@@ -4,20 +4,26 @@ namespace TesteAutoGlass.Core.Entities
 {
     public class Product : BaseEntity
     {
-        public Product(string descricao, DateOnly dataFabricacao, DateOnly dataValidade, int codigoFornecedor, string descricaoFornecedor, string cnpjFornecedor)
+        public Product()
+        {
+            
+        }
+        public Product(string descricao, DateTime dataFabricacao, DateTime dataValidade, int codigoFornecedor, string descricaoFornecedor, string cnpjFornecedor)
         {
             Descricao = descricao;
-            Situacao = ProductStatusEnum.Ativo;
             DataFabricacao = dataFabricacao;
             DataValidade = dataValidade;
             CodigoFornecedor = codigoFornecedor;
             DescricaoFornecedor = descricaoFornecedor;
             CNPJFornecedor = cnpjFornecedor;
+
+            Situacao = ProductStatusEnum.Ativo;
         }
+
         public string Descricao { get; private set; }
         public ProductStatusEnum Situacao { get; private set; }
-        public DateOnly DataFabricacao { get; private set; }
-        public DateOnly DataValidade { get; private set; }
+        public DateTime DataFabricacao { get; private set; }
+        public DateTime DataValidade { get; private set; }
         public int CodigoFornecedor { get; private set; }
         public string DescricaoFornecedor { get; private set; }
         public string CNPJFornecedor { get; private set; }
@@ -30,7 +36,7 @@ namespace TesteAutoGlass.Core.Entities
             }
         }
 
-        public void Update(string descricao, ProductStatusEnum situacao, DateOnly dataFabricacao, DateOnly dataValidade, int codigoFornecedor, string descricaoFornecedor, string cnpjFornecedor)
+        public void Update(string descricao, ProductStatusEnum situacao, DateTime dataFabricacao, DateTime dataValidade, int codigoFornecedor, string descricaoFornecedor, string cnpjFornecedor)
         {
             Descricao = descricao;
             Situacao = situacao;
