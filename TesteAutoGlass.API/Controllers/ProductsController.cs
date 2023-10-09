@@ -19,7 +19,6 @@ namespace TesteAutoGlass.API.Controllers
         }
 
         [HttpGet]
-        //public async Task<IActionResult> Get([FromQuery] string descricao = "", [FromQuery] ProductStatusEnum situacao = ProductStatusEnum.Ativo, [FromQuery] int pagina = 0, [FromQuery] int registrosPorPagina = 10)
         public async Task<IActionResult> Get(GetAllProductsQuery getAllProductsQuery)
         {
             //var getAllProductsQuery = new GetAllProductsQuery(query);

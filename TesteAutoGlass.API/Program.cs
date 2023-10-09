@@ -8,14 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("conn");
-builder.Services.AddDbContext<AutoGlassDbContext>(p => p.UseSqlServer(connectionString));
-//builder.Services.AddDbContext<AutoGlassDbContext>(options => options.UseInMemoryDatabase("conn"));
+//builder.Services.AddDbContext<AutoGlassDbContext>(p => p.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AutoGlassDbContext>(options => options.UseInMemoryDatabase("conn"));
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
-
-//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(Product)));
 
 builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(CreateProductCommand).Assembly); });
 
