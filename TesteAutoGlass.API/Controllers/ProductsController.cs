@@ -19,9 +19,10 @@ namespace TesteAutoGlass.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] string descricao = "", [FromQuery] ProductStatusEnum situacao = ProductStatusEnum.Ativo, [FromQuery] int pagina = 0, [FromQuery] int registrosPorPagina = 10)
+        //public async Task<IActionResult> Get([FromQuery] string descricao = "", [FromQuery] ProductStatusEnum situacao = ProductStatusEnum.Ativo, [FromQuery] int pagina = 0, [FromQuery] int registrosPorPagina = 10)
+        public async Task<IActionResult> Get(GetAllProductsQuery getAllProductsQuery)
         {
-            var getAllProductsQuery = new GetAllProductsQuery(descricao, situacao, pagina, registrosPorPagina);
+            //var getAllProductsQuery = new GetAllProductsQuery(query);
 
             var products = await _mediator.Send(getAllProductsQuery);
 
@@ -48,7 +49,7 @@ namespace TesteAutoGlass.API.Controllers
         {
             if (command.DataFabricacao >= command.DataValidade)
             {
-                return BadRequest("Data de Fabricação não pode ser igual ou maior que a data de Validade.");
+                return BadRequest("Data de Fabricação não pode ser igual ou maior que a Data de Validade.");
             }
 
             //var id = _productService.Create(inputModel);
@@ -63,7 +64,7 @@ namespace TesteAutoGlass.API.Controllers
         {
             if (command.DataFabricacao >= command.DataValidade)
             {
-                return BadRequest("Data de Fabricação não pode ser igual ou maior que a data de Validade.");
+                return BadRequest("Data de Fabricação não pode ser igual ou maior que a Data de Validade.");
             }
 
             //_productService.Update(inputModel);

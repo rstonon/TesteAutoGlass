@@ -6,7 +6,6 @@ namespace TesteAutoGlass.Application.Commands.CreateProduct
     public class CreateProductCommand : IRequest<int>
     {
         public string Descricao { get; set; }
-        public ProductStatusEnum Situacao { get; set; }
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
         public int CodigoFornecedor { get; set; }

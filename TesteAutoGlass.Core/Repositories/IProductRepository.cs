@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TesteAutoGlass.Core.Entities;
 using TesteAutoGlass.Core.Enums;
+using TesteAutoGlass.Core.Models;
 
 namespace TesteAutoGlass.Core.Repositories
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetAllAsync(string descricao, ProductStatusEnum situacao, int pagina, int registrosPorPagina);
+        Task<PaginationResult<Product>> GetAllAsync(string descricao, int page = 1);
         Task<Product> GetByIdAsync(int id);
         Task AddAsync(Product product);
         Task SaveChangesAsync();

@@ -7,12 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TesteAutoGlass.Core.Entities;
 using TesteAutoGlass.Core.Enums;
+using TesteAutoGlass.Core.Models;
 using TesteAutoGlass.Core.Repositories;
 
 namespace TesteAutoGlass.Infrastructure.Persistence.Repositories
 {
     public class ProductRepository : IProductRepository
     {
+        private const int PAGE_SIZE = 2;
         private readonly AutoGlassDbContext _dbContext;
         public ProductRepository(AutoGlassDbContext dbContext)
         {
@@ -27,15 +29,17 @@ namespace TesteAutoGlass.Infrastructure.Persistence.Repositories
 
         }
 
-        public async Task<List<Product>> GetAllAsync(string descricao, ProductStatusEnum situacao, int pagina, int registrosPorPagina)
+        public async Task<PaginationResult<Product>> GetAllAsync(string descricao, int page)
         {
-            return await _dbContext.Products
-                .Where(p => p.Descricao.Contains(descricao))
-                .Where(p => p.Situacao == situacao)
-                .AsNoTracking()
-                .Skip(pagina)
-                .Take(registrosPorPagina)
-                .ToListAsync();
+            IQueryable<Product> products = _dbContext.Products;
+
+            if (!string.IsNullOrWhiteSpace(descricao))
+            {
+                products = products
+                    .Where(p => p.Descricao.Contains(descricao));
+            }
+
+            return await products.GetPaged<Product>(page, PAGE_SIZE);
         }
 
         public async Task<Product> GetByIdAsync(int id)
