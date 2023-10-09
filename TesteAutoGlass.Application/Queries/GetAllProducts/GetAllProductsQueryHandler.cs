@@ -20,7 +20,7 @@ namespace TesteAutoGlass.Application.Queries.GetAllProducts
         }
         public async Task<List<ProductViewModel>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await _repository.GetAllAsync();
+            var products = await _repository.GetAllAsync(request.Descricao, request.Situacao, request.Pagina, request.QntRegistrosPorPagina);
 
             var productsViewModel = products
                 .Select(p => new ProductViewModel(p.Codigo, p.Descricao, p.Situacao))

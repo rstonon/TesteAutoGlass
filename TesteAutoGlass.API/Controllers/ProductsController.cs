@@ -5,6 +5,7 @@ using TesteAutoGlass.Application.Commands.DeleteProduct;
 using TesteAutoGlass.Application.Commands.UpdateProduct;
 using TesteAutoGlass.Application.Queries.GetAllProducts;
 using TesteAutoGlass.Application.Queries.GetByIDProduct;
+using TesteAutoGlass.Core.Enums;
 
 namespace TesteAutoGlass.API.Controllers
 {
@@ -18,9 +19,9 @@ namespace TesteAutoGlass.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string query)
+        public async Task<IActionResult> Get([FromQuery] string descricao = "", [FromQuery] ProductStatusEnum situacao = ProductStatusEnum.Ativo, [FromQuery] int pagina = 0, [FromQuery] int registrosPorPagina = 10)
         {
-            var getAllProductsQuery = new GetAllProductsQuery(query);
+            var getAllProductsQuery = new GetAllProductsQuery(descricao, situacao, pagina, registrosPorPagina);
 
             var products = await _mediator.Send(getAllProductsQuery);
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TesteAutoGlass.Core.Entities;
+using TesteAutoGlass.Core.Enums;
 using TesteAutoGlass.Core.Repositories;
 
 namespace TesteAutoGlass.Infrastructure.Persistence.Repositories
@@ -26,9 +27,15 @@ namespace TesteAutoGlass.Infrastructure.Persistence.Repositories
 
         }
 
-        public async Task<List<Product>> GetAllAsync()
+        public async Task<List<Product>> GetAllAsync(string descricao, ProductStatusEnum situacao, int pagina, int registrosPorPagina)
         {
-            return await _dbContext.Products.ToListAsync();
+            return await _dbContext.Products
+                .Where(p => p.Descricao.Contains(descricao))
+                .Where(p => p.Situacao == situacao)
+                .AsNoTracking()
+                .Skip(pagina)
+                .Take(registrosPorPagina)
+                .ToListAsync();
         }
 
         public async Task<Product> GetByIdAsync(int id)

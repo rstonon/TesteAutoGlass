@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TesteAutoGlass.Application.Queries.GetAllProducts;
 using TesteAutoGlass.Core.Entities;
+using TesteAutoGlass.Core.Enums;
 using TesteAutoGlass.Core.Repositories;
 
 namespace TesteAutoGlass.UnitTests.Application.Queries
@@ -26,9 +27,9 @@ namespace TesteAutoGlass.UnitTests.Application.Queries
             };
 
             var repositoryMock = new Mock<IProductRepository>();
-            repositoryMock.Setup(r => r.GetAllAsync().Result).Returns(products);
+            repositoryMock.Setup(r => r.GetAllAsync("", ProductStatusEnum.Ativo, 0, 2).Result).Returns(products);
 
-            var getAllProductQuery = new GetAllProductsQuery("");
+            var getAllProductQuery = new GetAllProductsQuery("", ProductStatusEnum.Ativo, 0, 2);
             var getAllProductQueryHandler = new GetAllProductsQueryHandler(repositoryMock.Object);
 
             var productViewModelList = await getAllProductQueryHandler.Handle(getAllProductQuery, new CancellationToken());
@@ -37,7 +38,7 @@ namespace TesteAutoGlass.UnitTests.Application.Queries
             Assert.NotEmpty(productViewModelList);
             Assert.Equal(products.Count, productViewModelList.Count);
 
-            repositoryMock.Verify(r => r.GetAllAsync().Result, Times.Once);
+            repositoryMock.Verify(r => r.GetAllAsync("", ProductStatusEnum.Ativo, 0, 2).Result, Times.Once);
         }
     }
 }
