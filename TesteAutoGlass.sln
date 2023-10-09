@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteAutoGlass.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteAutoGlass.Application", "TesteAutoGlass.Application\TesteAutoGlass.Application.csproj", "{38351B1C-BE17-42A9-AC2B-492A3FDCF8B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteAutoGlass.UnitTests", "TesteAutoGlass.UnitTests\TesteAutoGlass.UnitTests.csproj", "{6848302A-1C75-4708-971D-FE43D65C2938}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{38351B1C-BE17-42A9-AC2B-492A3FDCF8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38351B1C-BE17-42A9-AC2B-492A3FDCF8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38351B1C-BE17-42A9-AC2B-492A3FDCF8B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6848302A-1C75-4708-971D-FE43D65C2938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6848302A-1C75-4708-971D-FE43D65C2938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6848302A-1C75-4708-971D-FE43D65C2938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6848302A-1C75-4708-971D-FE43D65C2938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
